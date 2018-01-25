@@ -57,5 +57,4 @@ public abstract class Animal implements Competitor{
         System.out.println(type + " " + name + ": " + onDistance);
     }
 
-
 }

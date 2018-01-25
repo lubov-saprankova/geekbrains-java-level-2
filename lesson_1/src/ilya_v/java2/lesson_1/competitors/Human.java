@@ -1,6 +1,7 @@
 package ilya_v.java2.lesson_1.competitors;
 
 public class Human implements Competitor {
+
     String name;
     int maxRunDistance;
     int maxJumpHeight;
@@ -46,7 +47,7 @@ public class Human implements Competitor {
         }
     }
 
-    public void showResult(){
+    public void showResult() {
         System.out.println(name + ": " + active);
     }
 
