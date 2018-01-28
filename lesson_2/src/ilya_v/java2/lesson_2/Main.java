@@ -39,7 +39,7 @@ public class Main {
         return sum;
     }
 
-    private static int parseInt(String str) throws MyArrayDataException {
+    private static int parseInt(String str) {
         try {
             return Integer.parseInt(str);
         } catch (Exception e) {
@@ -48,8 +48,10 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        String[][] t = new String[4][4];
-        String[][] t1 = {{"0", "1", "2", "3kjhjjj"}, {"0", "1", "2", "3"}, {"0", "1", "2", "3"}, {"0", "1", "2", "3"}};
+        String[][] t = new String[4][48];
+        //twoStringArr(t);
+
+        String[][] t1 = {{"0", "1", "2", "3"}, {"0", "1", "2", "3c"}, {"0", "1", "2", "3"}, {"0", "1", "2", "3"}};
         twoStringArr(t1);
         System.out.println(sumAllStrings(t1));
 
