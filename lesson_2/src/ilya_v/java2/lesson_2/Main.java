@@ -24,6 +24,9 @@ public class Main {
      * с детализацией в какой именно ячейке лежат неверные данные.
      */
     private static int sumAllStrings(String[][] arr) {
+
+        if ((arr.length != 4) || (arr[0].length != 4)) throw new MyArraySizeException("Необходим массив размером 4х4");
+
         int sum = 0;
 
         for (int i = 0; i <= arr.length - 1; i++) {
@@ -51,15 +54,10 @@ public class Main {
         String[][] t = new String[4][48];
         //twoStringArr(t);
 
-        String[][] t1 = {{"0", "1", "2", "3"}, {"0", "1", "2", "3c"}, {"0", "1", "2", "3"}, {"0", "1", "2", "3"}};
-        twoStringArr(t1);
-        System.out.println(sumAllStrings(t1));
-
-        /*
-
-
-        3. В методе main() вызвать полученный метод, обработать возможные
-             исключения MySizeArrayException и MyArrayDataException,
-              и вывести результат расчета.  */
+        /* 3. В методе main() вызвать полученный метод, обработать возможные
+        исключения MySizeArrayException и MyArrayDataException,
+        и вывести результат расчета.  */
+        String[][] t1 = {{"0", "1", "2", "3"}, {"0", "1", "2", "3"}, {"0", "1", "2", "3"}, {"0", "1", "2", "3"}};
+        System.out.println("Сумма элементов равна " + sumAllStrings(t1));
     }
 }
