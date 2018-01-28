@@ -2,7 +2,7 @@ package ilya_v.java2.lesson_1.competitors;
 
 public abstract class Animal implements Competitor{
     String type;
-    String name;
+    public String name;
     int maxRunDistance;
     int maxJumpHeight;
     int maxSwimDistance;
@@ -57,4 +57,13 @@ public abstract class Animal implements Competitor{
         System.out.println(type + " " + name + ": " + onDistance);
     }
 
+    @Override
+    public String getName() {
+        return this.name;
+    }
+
+    @Override
+    public String getType() {
+        return this.type;
+    }
 }

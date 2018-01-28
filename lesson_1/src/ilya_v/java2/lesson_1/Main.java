@@ -15,7 +15,9 @@ public class Main {
         Competitor[] competitors = {
                 new Human("Иван"),
                 new Cat("Леопольд"),
-                new Dog("Творожок")
+                new Dog("Творожок"),
+                new Cat("Палач"),
+                new Cat("Барсик III"),
         };
 
         Obstacle[] course = {
@@ -36,12 +38,19 @@ public class Main {
             a.showResult();
         }*/
 
-        Team[] teams = {
-                new Team("Команда А", competitors),
+        Team[] teams = new Team[]{
+                new Team("Команда А", new Human("Аркадий"), new Dog("Тузик") ,  new Cat("Белый Бим Черный Хвост Красный Ус")),
                 new Team("Команда B", competitors),
         };
 
-        int[] x = {1, 2, 3, 4};
+        for (Team team : teams) {
+            System.out.println("Команда:");
+            team.getAllParticipants();
+            System.out.println();
+        }
+
+
+
 
         /*
         System.out.println(teams[0].name);
@@ -50,7 +59,9 @@ public class Main {
         }
 
         /*
-        for (participant : teams[0].participants){
+        for (participant : teams[0].participants)
+
+
             for (Competitor a: participant) {
             for (Obstacle o : course) {
                 o.doIt(a);

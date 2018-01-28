@@ -1,8 +1,8 @@
 package ilya_v.java2.lesson_1.competitors;
 
 public class Human implements Competitor {
-
-    String name;
+    final String type = "Человек";
+    public String name;
     int maxRunDistance;
     int maxJumpHeight;
     int maxSwimDistance;
@@ -51,5 +51,13 @@ public class Human implements Competitor {
         System.out.println(name + ": " + active);
     }
 
+    @Override
+    public String getName() {
+        return this.name;
+    }
 
+    @Override
+    public String getType() {
+        return this.type;
+    }
 }
