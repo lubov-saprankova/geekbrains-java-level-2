@@ -23,25 +23,25 @@ public class Main {
      * в ячейке лежит символ или текст вместо числа), должно быть брошено исключение MyArrayDataException,
      * с детализацией в какой именно ячейке лежат неверные данные.
      */
-    private static int sumAllStrings(String[][] arr) {
+    private static int sumAllStrings(String[][] arr) throws MyArrayDataException {
         int sum = 0;
 
         for (int i = 0; i <= arr.length - 1; i++) {
             for (int j = 0; j <= arr[0].length - 1; j++) {
                 try {
                     sum += Integer.parseInt(arr[i][j]);
-                } catch (NumberFormatException e) {
-                    System.out.println("Exception: " + e);
+                } catch (Exception e) {
+                    System.out.println("Исключение для i = " + i + " и j = " + j + ": " + e);
                 }
             }
         }
 
         return sum;
     }
-    
+
     public static void main(String[] args) {
         String[][] t = new String[4][4];
-        String[][] t1 = {{"0", "1g", "2", "3"}, {"0", "1", "2", "3"},{"0", "1", "2", "3"},{"0", "1", "2", "3"}};
+        String[][] t1 = {{"0", "1g", "2", "3"}, {"0", "1", "2", "3"}, {"0", "1", "2", "3"}, {"0", "1", "2", "3"}};
         twoStringArr(t1);
         System.out.println(sumAllStrings(t1));
         /*
