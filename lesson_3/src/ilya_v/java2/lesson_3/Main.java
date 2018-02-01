@@ -2,6 +2,7 @@ package ilya_v.java2.lesson_3;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Map;
 
 public class Main {
 
@@ -44,7 +45,6 @@ public class Main {
         }
 
         /*
-
            2. Написать простой класс ТелефонныйСправочник, который хранит в себе список фамилий и телефонных номеров.
            В этот телефонный справочник с помощью метода add() можно добавлять записи.
            С помощью метода get() искать номер телефона по фамилии.
@@ -57,6 +57,16 @@ public class Main {
             Консоль желательно не использовать (в том числе Scanner),
             тестировать просто из метода main() прописывая add() и get().
         */
+
+        Phonebook myPhonebook = new Phonebook();
+        myPhonebook.add("Арсен Ярополкович Творожок", "8(960)274-44-10");
+        System.out.println("Номер Арсена Ярополковича Творожока: " +
+                            myPhonebook.get("Арсен Ярополкович Творожок"));
+
+        for (Map.Entry<String, String> record : myPhonebook.phoneRecord.entrySet()) {
+            System.out.println(record.getValue() + " " + record.getKey());
+        }
+
 
     }
 }
