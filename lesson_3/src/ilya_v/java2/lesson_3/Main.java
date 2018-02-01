@@ -58,15 +58,14 @@ public class Main {
             тестировать просто из метода main() прописывая add() и get().
         */
 
-        Phonebook myPhonebook = new Phonebook();
-        myPhonebook.add("Арсен Ярополкович Творожок", "8(960)274-44-10");
+        PhoneBook myPhoneBook = new PhoneBook();
+        myPhoneBook.add("Арсен Ярополкович Творожок", "8(960)274-44-10");
         System.out.println("Номер Арсена Ярополковича Творожока: " +
-                            myPhonebook.get("Арсен Ярополкович Творожок"));
+                myPhoneBook.get("Арсен Ярополкович Творожок"));
 
-        for (Map.Entry<String, String> record : myPhonebook.phoneRecord.entrySet()) {
+        for (Map.Entry<String, String> record : myPhoneBook.phoneRecord.entrySet()) {
             System.out.println(record.getValue() + " " + record.getKey());
         }
-
 
     }
 }
