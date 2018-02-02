@@ -67,5 +67,11 @@ public class Main {
         myPhoneBook.add("Напримеров", "314-6-824");
         System.out.println("Номер Напримерова: " +myPhoneBook.get("Напримеров"));
 
+        System.out.println();
+        System.out.println("------------");
+        System.out.println();
+
+        myPhoneBook.printAllBook();
+
     }
 }

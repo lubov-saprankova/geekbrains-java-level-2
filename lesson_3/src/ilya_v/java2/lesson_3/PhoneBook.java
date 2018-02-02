@@ -1,6 +1,6 @@
 package ilya_v.java2.lesson_3;
 
-import java.util.HashMap;
+import java.util.*;
 
 /**
  * @param phonebookRecord userName phoneNumber
@@ -19,5 +19,15 @@ class PhoneBook {
 
     String get(String userName){
         return this.phoneRecord.get(userName);
+    }
+
+    void printAllBook(){
+        Iterator<Map.Entry<String, String>> iter = this.phoneRecord.entrySet().iterator();
+
+        while (iter.hasNext()) {
+            Map.Entry<String, String> e = iter.next();
+            System.out.println(e.getKey() + " " + e.getValue());
+        }
+
     }
 }
