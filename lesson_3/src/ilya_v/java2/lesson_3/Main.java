@@ -64,9 +64,7 @@ public class Main {
         System.out.println("Номер Арсена Ярополковича Творожока: " +
                 myPhoneBook.get("Арсен Ярополкович Творожок"));
 
-        for (Map.Entry<String, String> record : myPhoneBook.phoneRecord.entrySet()) {
-            System.out.println(record.getValue() + " " + record.getKey());
-        }
+
 
     }
 }

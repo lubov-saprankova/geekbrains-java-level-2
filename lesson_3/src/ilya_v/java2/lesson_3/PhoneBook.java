@@ -5,19 +5,19 @@ import java.util.HashMap;
 /**
  * @param phonebookRecord userName phoneNumber
  */
-public class PhoneBook {
-    public HashMap<String, String> phoneRecord = new HashMap<>();
+class PhoneBook {
+    private HashMap<String, String> phoneRecord = new HashMap<>();
 
-    public PhoneBook(){
+    PhoneBook(){
         this.phoneRecord.put("Пупкин Иван", "8(999)123-32-12");
         this.phoneRecord.put("Аристарх Арсенович Шмутьковато", "8(926)783-49-27");
     }
 
-    public void add(String userName, String phoneNumber){
+    void add(String userName, String phoneNumber){
         this.phoneRecord.put(userName, phoneNumber);
     }
 
-    public String get(String userName){
+    String get(String userName){
         return this.phoneRecord.get(userName);
     }
 }
