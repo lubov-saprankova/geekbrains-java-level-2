@@ -58,7 +58,7 @@ public class Main {
             тестировать просто из метода main() прописывая add() и get().
         */
 
-        // https://github.com/decilya/geekbrains-java-level-2/blob/master/lesson_3/src/ilya_v/java2/lesson_3/Phonebook.java
+        // https://github.com/decilya/geekbrains-java-level-2/blob/master/lesson_3/src/ilya_v/java2/lesson_3/PhoneBook.java
         PhoneBook myPhoneBook = new PhoneBook();
         myPhoneBook.add("Арсен Ярополкович Творожок", "8(960)274-44-10");
         System.out.println("Номер Арсена Ярополковича Творожока: " +
