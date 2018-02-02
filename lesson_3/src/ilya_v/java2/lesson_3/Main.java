@@ -64,7 +64,8 @@ public class Main {
         System.out.println("Номер Арсена Ярополковича Творожока: " +
                 myPhoneBook.get("Арсен Ярополкович Творожок"));
 
-
+        myPhoneBook.add("Напримеров", "314-6-824");
+        System.out.println("Номер Напримерова: " +myPhoneBook.get("Напримеров"));
 
     }
 }
