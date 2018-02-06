@@ -27,7 +27,7 @@ class myWin extends JFrame {
 
     myWin() {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Мой \"Чат\" на Java (Swig)");
+        setTitle("Мой \"Чат\" на Java (Swing)");
         setBounds(1100, 500, 400, 400);
         JButton jBtn = new JButton("ok");
 
