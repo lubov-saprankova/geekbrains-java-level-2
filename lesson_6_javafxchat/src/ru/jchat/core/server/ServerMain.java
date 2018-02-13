@@ -21,10 +21,6 @@ public class ServerMain {
                 new ClientHandler(socket);
             }
 
-
-
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }

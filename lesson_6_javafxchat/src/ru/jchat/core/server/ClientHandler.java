@@ -10,7 +10,7 @@ public class ClientHandler {
     private DataOutputStream out;
     private DataInputStream in;
 
-    public ClientHandler(Socket socket){
+    public ClientHandler(Socket socket) {
         this.socket = socket;
 
         try {
@@ -18,20 +18,28 @@ public class ClientHandler {
             this.in = new DataInputStream(this.socket.getInputStream());
 
             new Thread(() -> {
-                while (true) {
-                    try {
+
+                try {
+                    while (true) {
                         String message = in.readUTF();
                         System.out.println("Клиент: " + message);
                         out.writeUTF("echo: " + message);
 
                         if (message.equals("/end")) break;
-                    } catch (IOException e){
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } finally {
+                    try {
+                        socket.close();
+                    } catch (IOException e) {
                         e.printStackTrace();
                     }
                 }
+
             }).start();
 
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
