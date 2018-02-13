@@ -12,9 +12,10 @@ public class Main {
         float[] arr = new float[size];
 
         // 2. Заполняют этот массив единицами.
-        for (int i = 0; i < arr.length; i++) {
+        /*for (int i = 0; i < arr.length; i++) {
             arr[0] = 1;
-        }
+        }*/
+        Arrays.fill(arr, 1.0f);
 
         return arr;
     }
@@ -48,10 +49,10 @@ public class Main {
 
         int countElementForThread = (arr.length / threadsCount);
 
-        Arrays.fill(arr, 1f);
         long a = System.currentTimeMillis();
         float[][] m = new float[threadsCount][countElementForThread];
         Thread[] t = new Thread[threadsCount];
+
         for (int i = 0; i < threadsCount; i++) {
             System.arraycopy(arr, countElementForThread * i, m[i], 0, countElementForThread);
             final int u = i; //обычную переменную нельзя передать в поток
@@ -66,6 +67,7 @@ public class Main {
 
             t[i].start();
         }
+
         for (int i = 0; i < threadsCount; i++) {
             try {
                 t[i].join();
@@ -73,6 +75,7 @@ public class Main {
                 e.printStackTrace();
             }
         }
+        
         for (int i = 0; i < threadsCount; i++) {
             System.arraycopy(m[i], 0, arr, i * countElementForThread, countElementForThread);
         }
