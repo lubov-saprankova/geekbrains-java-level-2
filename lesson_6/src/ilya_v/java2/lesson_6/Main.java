@@ -32,7 +32,15 @@ public class Main {
 
             Scanner in = new Scanner(socket.getInputStream());
             PrintWriter out = new PrintWriter(socket.getOutputStream());
-            
+
+            while (true) {
+                String message = in.nextLine();
+                System.out.println("Клиент: " + message);
+                out.println("echo: " + message);
+
+                if (message.equals("/end")) break;
+            }
+
         } catch (IOException e){
 	        e.printStackTrace();
         }
