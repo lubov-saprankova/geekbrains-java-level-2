@@ -11,7 +11,7 @@ public class Main {
     public static void main(String[] args) {
 
 	    /*
-	    1. Написать консольный вариант клиент\серверного приложения,
+        1. Написать консольный вариант клиент\серверного приложения,
 	    в котором пользователь может писать сообщения, как на клиентской стороне,
 	    так и на серверной. Т.е. если на клиентской стороне написать "Привет", нажать Enter
 	    то сообщение должно передаться на сервер и там отпечататься в консоли. Если сделать
@@ -24,14 +24,14 @@ public class Main {
              который будет ожидать второго/третьего/n-го клиентов
 	     */
 
-	    try (ServerSocket serverSocket = new ServerSocket(8181)){
+        try (ServerSocket serverSocket = new ServerSocket(8181)) {
 
-	        System.out.println("Сервер запущен. Ожидание клиента...");
+            System.out.println("Сервер запущен. Ожидание клиента...");
             Socket socket = serverSocket.accept();
             System.out.println("Клиент успешно присоединился к серверу.");
 
             Scanner in = new Scanner(socket.getInputStream());
-            PrintWriter out = new PrintWriter(socket.getOutputStream());
+            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 
             while (true) {
                 String message = in.nextLine();
@@ -41,12 +41,9 @@ public class Main {
                 if (message.equals("/end")) break;
             }
 
-        } catch (IOException e){
-	        e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
-
-
 
     }
 }
