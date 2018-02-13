@@ -27,6 +27,12 @@ public class ClientHandler {
                         if (message.equals("/end")) break;
                     } catch (IOException e){
                         e.printStackTrace();
+                    } finally {
+                        try {
+                            socket.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
             }).start();
