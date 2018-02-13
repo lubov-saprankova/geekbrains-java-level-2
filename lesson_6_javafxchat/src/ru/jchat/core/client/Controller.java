@@ -39,16 +39,24 @@ public class Controller implements Initializable {
             Thread thread = new Thread(new Runnable() {
                 @Override
                 public void run() {
-                    while (true) {
-                        String s = null;
-                        try {
+
+                    String s = null;
+                    try {
+                        while (true) {
                             s = in.readUTF();
                             textArea.appendText(s + "\n");
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } finally {
+                        try {
+                            socket.close();
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
                     }
                 }
+
             });
             thread.setDaemon(true);
             thread.start();
