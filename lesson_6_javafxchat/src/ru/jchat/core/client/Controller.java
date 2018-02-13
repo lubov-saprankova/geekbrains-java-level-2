@@ -24,9 +24,16 @@ public class Controller implements Initializable {
     private DataOutputStream  out;
     private DataInputStream in;
 
+    final String SERVER_IP = "127.0.0.1";
+    final int SERVER_PORT = 8181;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        try {
+            this.socket = new Socket(SERVER_IP, SERVER_PORT);
+        } catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     public void sendMessage(){
