@@ -72,7 +72,7 @@ public class Main {
             System.arraycopy(m[i], 0, arr, i * countElementForThread, countElementForThread);
         }
 
-        return System.currentTimeMillis() - a;
+        return (System.currentTimeMillis() - a);
     }
 
 
@@ -87,7 +87,7 @@ public class Main {
             потом склеивает эти массивы обратно в один. */
 
         float[] arrNew = createArr(10_000_000);
-        reSetArrInTwoThread(arrNew);
+        System.out.println(reSetArrInTwoThread(arrNew));
 
 
     }
