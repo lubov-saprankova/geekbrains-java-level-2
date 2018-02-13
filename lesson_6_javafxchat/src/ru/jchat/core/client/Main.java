@@ -1,4 +1,4 @@
-package sample;
+package ru.jchat.core.client;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
