@@ -6,8 +6,6 @@ import java.util.concurrent.Executors;
 
 public class Main {
 
-    final static int THREADS_COUNT = 4;
-
     static float[] createArr(int size) {
 
         // 1. Создают одномерный длинный массив, например:
@@ -39,15 +37,22 @@ public class Main {
     }
 
 
-    static long reSetArrInTwoThread(float[] arr) {
+    /**
+     * reSetArr в n-потоков
+     *
+     * @param arr          исходный массив
+     * @param threadsCount кол-во потоков
+     * @return
+     */
+    static long reSetArrInMultiThread(float[] arr, int threadsCount) {
 
-        int countElementForThread = (arr.length / THREADS_COUNT);
+        int countElementForThread = (arr.length / threadsCount);
 
         Arrays.fill(arr, 1f);
         long a = System.currentTimeMillis();
-        float[][] m = new float[THREADS_COUNT][countElementForThread];
-        Thread[] t = new Thread[THREADS_COUNT];
-        for (int i = 0; i < THREADS_COUNT; i++) {
+        float[][] m = new float[threadsCount][countElementForThread];
+        Thread[] t = new Thread[threadsCount];
+        for (int i = 0; i < threadsCount; i++) {
             System.arraycopy(arr, countElementForThread * i, m[i], 0, countElementForThread);
             final int u = i; //обычную переменную нельзя передать в поток
             t[i] = new Thread(new Runnable() {
@@ -61,14 +66,14 @@ public class Main {
 
             t[i].start();
         }
-        for (int i = 0; i < THREADS_COUNT; i++) {
+        for (int i = 0; i < threadsCount; i++) {
             try {
                 t[i].join();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
-        for (int i = 0; i < THREADS_COUNT; i++) {
+        for (int i = 0; i < threadsCount; i++) {
             System.arraycopy(m[i], 0, arr, i * countElementForThread, countElementForThread);
         }
 
@@ -87,8 +92,27 @@ public class Main {
             потом склеивает эти массивы обратно в один. */
 
         float[] arrNew = createArr(10_000_000);
-        System.out.println(reSetArrInTwoThread(arrNew));
+        System.out.println(reSetArrInMultiThread(arrNew, 2));
 
+        float[] arrTmpNew = createArr(10_000_000);
+        System.out.println(reSetArrInMultiThread(arrTmpNew, 4));
 
+        float[] arrNew1 = createArr(10_000_000);
+        System.out.println(reSetArrInMultiThread(arrNew1, 6));
+
+        float[] arrNew2 = createArr(10_000_000);
+        System.out.println(reSetArrInMultiThread(arrNew2, 8));
+
+        float[] arrNew3 = createArr(10_000_000);
+        System.out.println(reSetArrInMultiThread(arrNew3, 12));
+
+        float[] arrNew4 = createArr(10_000_000);
+        System.out.println(reSetArrInMultiThread(arrNew4, 32));
+
+        float[] arrNew5 = createArr(10_000_000);
+        System.out.println(reSetArrInMultiThread(arrNew5, 64));
+
+        float[] arrNew6 = createArr(10_000_000);
+        System.out.println(reSetArrInMultiThread(arrNew6, 128));
     }
 }
