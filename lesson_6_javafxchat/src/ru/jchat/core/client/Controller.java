@@ -21,7 +21,7 @@ public class Controller implements Initializable {
     TextField msgField;
 
     private Socket socket;
-    private DataOutputStream  out;
+    private DataOutputStream out;
     private DataInputStream in;
 
     final String SERVER_IP = "127.0.0.1";
@@ -31,18 +31,40 @@ public class Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         try {
             this.socket = new Socket(SERVER_IP, SERVER_PORT);
-        } catch (IOException e){
+            this.in = new DataInputStream(this.socket.getInputStream());
+
+            // this.out = new DataOutputStream("1.txt");
+            this.out = new DataOutputStream(this.socket.getOutputStream());
+
+            Thread thread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    while (true) {
+                        String s = null;
+                        try {
+                            s = in.readUTF();
+                            textArea.appendText(s + "\n");
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            });
+            thread.setDaemon(true);
+            thread.start();
+
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void sendMessage(){
+    public void sendMessage() {
 
         try {
             out.writeUTF(msgField.getText());
             msgField.clear();
             msgField.requestFocus();
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
