@@ -1,3 +1,0 @@
-https://github.com/decilya/geekbrains-java-level-2/blob/master/lesson_6/src/ilya_v/java2/lesson_6/Main.java
-
-зрђ Java FX: https://github.com/decilya/geekbrains-java-level-2/tree/master/lesson_6_javafxchat/src/ru/jchat/core
