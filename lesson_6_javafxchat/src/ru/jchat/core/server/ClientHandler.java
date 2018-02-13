@@ -17,7 +17,7 @@ public class ClientHandler {
             this.out = new DataOutputStream(this.socket.getOutputStream());
             this.in = new DataInputStream(this.socket.getInputStream());
 
-            Thread thread = new Thread(() -> {
+            new Thread(() -> {
                 while (true) {
                     try {
                         String message = in.readUTF();
@@ -29,8 +29,7 @@ public class ClientHandler {
                         e.printStackTrace();
                     }
                 }
-            });
-
+            }).start();
 
         } catch (IOException e){
             e.printStackTrace();
