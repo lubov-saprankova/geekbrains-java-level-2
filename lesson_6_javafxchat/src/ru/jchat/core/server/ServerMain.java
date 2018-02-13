@@ -13,19 +13,17 @@ public class ServerMain {
         try (ServerSocket serverSocket = new ServerSocket(8181)) {
 
             System.out.println("Сервер запущен. Ожидание клиента...");
-            Socket socket = serverSocket.accept();
-            System.out.println("Клиент успешно присоединился к серверу.");
 
-            DataInputStream in = new DataInputStream(socket.getInputStream());
-            DataOutputStream out = new DataOutputStream(socket.getOutputStream());
+            while (true){
+                Socket socket = serverSocket.accept();
+                System.out.println("Клиент успешно присоединился к серверу.");
 
-            while (true) {
-                String message = in.readUTF();
-                System.out.println("Клиент: " + message);
-                out.writeUTF("echo: " + message);
-
-                if (message.equals("/end")) break;
+                new ClientHandler(socket);
             }
+
+
+
+
 
         } catch (IOException e) {
             e.printStackTrace();
