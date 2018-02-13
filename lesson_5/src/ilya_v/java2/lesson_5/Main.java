@@ -75,7 +75,7 @@ public class Main {
                 e.printStackTrace();
             }
         }
-        
+
         for (int i = 0; i < threadsCount; i++) {
             System.arraycopy(m[i], 0, arr, i * countElementForThread, countElementForThread);
         }
