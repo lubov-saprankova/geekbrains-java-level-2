@@ -40,10 +40,9 @@ public class Controller implements Initializable {
                 @Override
                 public void run() {
 
-                    String s = null;
                     try {
                         while (true) {
-                            s = in.readUTF();
+                            String s = in.readUTF();
                             textArea.appendText(s + "\n");
                         }
                     } catch (IOException e) {
