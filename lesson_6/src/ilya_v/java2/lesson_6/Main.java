@@ -1,5 +1,11 @@
 package ilya_v.java2.lesson_6;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -17,6 +23,21 @@ public class Main {
             ВАЖНО! Сервер общается только с одним клиентом, т.е. не нужно запускать цикл,
              который будет ожидать второго/третьего/n-го клиентов
 	     */
+
+	    try (ServerSocket serverSocket = new ServerSocket(8181)){
+
+	        System.out.println("Сервер запущен. Ожидание клиента...");
+            Socket socket = serverSocket.accept();
+            System.out.println("Клиент успешно присоединился к серверу.");
+
+            Scanner in = new Scanner(socket.getInputStream());
+            PrintWriter out = new PrintWriter(socket.getOutputStream());
+            
+        } catch (IOException e){
+	        e.printStackTrace();
+        }
+
+
 
 
     }
