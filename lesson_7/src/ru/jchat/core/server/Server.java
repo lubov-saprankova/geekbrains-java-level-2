@@ -5,10 +5,10 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Vector;
 
-public class Server {
+class Server {
     private Vector<ClientHandler> clients;
 
-    public Server() {
+    Server() {
 
         try (ServerSocket serverSocket = new ServerSocket(8181)) {
             clients = new Vector<>();
@@ -18,11 +18,18 @@ public class Server {
                 Socket socket = serverSocket.accept();
                 System.out.println("Клиент успешно присоединился к серверу.");
 
-                clients.add(new ClientHandler(socket));
+                clients.add( new ClientHandler(this, socket));
             }
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+    void broadcastMessage(String message) {
+        for (ClientHandler c : this.clients){
+            c.sendMessage(message);
+        }
+    }
+
 }
