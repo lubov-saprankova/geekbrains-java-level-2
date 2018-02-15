@@ -16,9 +16,12 @@ class Server {
 
             while (true) {
                 Socket socket = serverSocket.accept();
-                System.out.println("Клиент успешно присоединился к серверу.");
+                System.out.println("Клиент " + socket.getInetAddress() + ":" +
+                        socket.getPort() + ":" +
+                        socket.getLocalPort() +
+                        " успешно присоединился к серверу.");
 
-                clients.add( new ClientHandler(this, socket));
+                clients.add(new ClientHandler(this, socket));
             }
 
         } catch (IOException e) {
@@ -27,7 +30,7 @@ class Server {
     }
 
     void broadcastMessage(String message) {
-        for (ClientHandler c : this.clients){
+        for (ClientHandler c : this.clients) {
             c.sendMessage(message);
         }
     }

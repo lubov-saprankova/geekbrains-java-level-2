@@ -55,8 +55,8 @@ public class Controller implements Initializable {
                         }
                     }
                 }
-
             });
+
             thread.setDaemon(true);
             thread.start();
 
